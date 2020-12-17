@@ -27,6 +27,33 @@ Route::get('/', function () {
     return view('home', compact('var', 'name'));
 });
 
-Route::get('/about', function(){
+Route::get('/about', function () {
     return '<h1>About Page</h1>';
 });
+
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
+
+// Route::post('/send-email', function () {
+//     if(!empty($_POST)) {
+//         dump($_POST);
+//     }
+//     return 'Send Email!';
+// });
+
+// Route::match(['post', 'get'], '/contact', function () {
+//     if(!empty($_POST)) {
+//         dump($_POST);
+//     }
+//     return view('contact');
+// });
+
+Route::match(['post', 'get'], '/contacts', function () {
+    if(!empty($_POST)) {
+        dump($_POST);
+    }
+    return view('contact');
+})->name('contact');
+
+Route::redirect('/about', '/contacts', 301);
