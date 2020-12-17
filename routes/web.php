@@ -25,7 +25,7 @@ Route::get('/', function () {
     // return view('home')->with('result', $var);
     // return view('home', ['result' => $var, 'name' => $name]);
     return view('home', compact('var', 'name'));
-});
+})->name('home');
 
 Route::get('/about', function () {
     return '<h1>About Page</h1>';
@@ -57,3 +57,35 @@ Route::match(['post', 'get'], '/contacts', function () {
 })->name('contact');
 
 Route::redirect('/about', '/contacts', 301);
+
+// Route::get('/post/{id}', function($id){
+//     return "post $id";
+// });
+
+// Route::get('/post/{id}/{slug}', function ($id, $slug) {
+//     return "post $id | $slug";
+// })->where(['id' => '[0-9]+', 'slug' => '[A-Za-z0-9-]+']);
+
+Route::get('/post/{id}/{slug?}', function ($id, $slug = null) {
+    return "post $id | $slug";
+})->name('post');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/posts', function () {
+        return "Post List";
+    });
+    
+    Route::get('/post/create', function () {
+        return "Post create";
+    });
+    
+    Route::get('/post/{id}/edit', function ($id) {
+        return "Post edit $id";
+    })->name('post');
+} );
+
+Route::fallback(function () {
+    // return redirect()->route('home');
+    abort(404, 'Oops, Page not found...');
+});
+

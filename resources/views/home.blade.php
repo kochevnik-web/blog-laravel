@@ -8,6 +8,8 @@
 <body>
     <h1>Hello, World!</h1>
     {{$var}} <br>
-    {{$name}}
+    {{$name}} <br>
+    {{route('post',['id' => 3, 'slug' => 'test-2'])}}<br>
+    {{route('admin.post',['id' => 5])}}
 </body>
 </html>
