@@ -10,7 +10,20 @@ class HomeController extends Controller
     {
         // DB::insert("INSERT INTO post (content, text, created_at, updated_at) VALUES (:title, :content, :created_at, :updated_at)", ['title' => 'Статья 5', 'content' => 'Контент статьи 5', 'updated_at' => NOW(), 'created_at' => NOW()]);
 
-        DB::update("UPDATE post SET created_at = :created_at, updated_at = :updated_at WHERE created_at IS NULL OR updated_at IS NULL", ['created_at' => NOW(), 'updated_at' => NOW()]);
+        // DB::update("UPDATE post SET created_at = :created_at, updated_at = :updated_at WHERE created_at IS NULL OR updated_at IS NULL", ['created_at' => NOW(), 'updated_at' => NOW()]);
+
+        DB::beginTransaction();
+
+        try {
+            DB::update("UPDATE post SET created_at = :created_at WHERE created_at IS NULL", ['created_at' => NOW()]);
+            DB::update("UPDATE post SET updated_at2 = :updated_at WHERE updated_at IS NULL", ['updated_at' => NOW()]);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            echo $e->getMessage();
+        }
+
+
 
         $posts = DB::select("SELECT * FROM post");
         return $posts;
