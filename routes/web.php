@@ -11,78 +11,12 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', 'HomeController@index');
 
-// Route::get('/', function () {
-//     return '<h1>Hello, World!</h1>';
-// });
+Route::get('/test', 'HomeController@test');
+Route::get('/test2', 'Test\TestController@index');
 
-Route::get('/', function () {
-    $var  = 3 + 2;
-    $name = 'John';
-    // return view('home')->with('result', $var);
-    // return view('home', ['result' => $var, 'name' => $name]);
-    return view('home', compact('var', 'name'));
-})->name('home');
-
-Route::get('/about', function () {
-    return '<h1>About Page</h1>';
-});
-
-// Route::get('/contact', function () {
-//     return view('contact');
-// });
-
-// Route::post('/send-email', function () {
-//     if(!empty($_POST)) {
-//         dump($_POST);
-//     }
-//     return 'Send Email!';
-// });
-
-// Route::match(['post', 'get'], '/contact', function () {
-//     if(!empty($_POST)) {
-//         dump($_POST);
-//     }
-//     return view('contact');
-// });
-
-Route::match(['post', 'get'], '/contacts', function () {
-    if(!empty($_POST)) {
-        dump($_POST);
-    }
-    return view('contact');
-})->name('contact');
-
-Route::redirect('/about', '/contacts', 301);
-
-// Route::get('/post/{id}', function($id){
-//     return "post $id";
-// });
-
-// Route::get('/post/{id}/{slug}', function ($id, $slug) {
-//     return "post $id | $slug";
-// })->where(['id' => '[0-9]+', 'slug' => '[A-Za-z0-9-]+']);
-
-Route::get('/post/{id}/{slug?}', function ($id, $slug = null) {
-    return "post $id | $slug";
-})->name('post');
-
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/posts', function () {
-        return "Post List";
-    });
-    
-    Route::get('/post/create', function () {
-        return "Post create";
-    });
-    
-    Route::get('/post/{id}/edit', function ($id) {
-        return "Post edit $id";
-    })->name('post');
-} );
+Route::get('/page/{slug}', 'PageController@show');
 
 Route::fallback(function () {
     // return redirect()->route('home');
