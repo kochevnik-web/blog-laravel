@@ -8,25 +8,19 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // DB::insert("INSERT INTO post (content, text, created_at, updated_at) VALUES (:title, :content, :created_at, :updated_at)", ['title' => 'Статья 5', 'content' => 'Контент статьи 5', 'updated_at' => NOW(), 'created_at' => NOW()]);
 
-        // DB::update("UPDATE post SET created_at = :created_at, updated_at = :updated_at WHERE created_at IS NULL OR updated_at IS NULL", ['created_at' => NOW(), 'updated_at' => NOW()]);
+        // $data = DB::table('country')->get();
+        // $data = DB::table('country')->limit(2)->get();
+        // $data = DB::table('country')->select('Code', 'Name', 'Region')->limit(2)->get();
+        // $data = DB::table('country')->select('Code', 'Name', 'Region')->first();
+        // $data = DB::table('country')->select('Code', 'Name', 'Region')->orderby('Code', 'desc')->first();
+        // $data = DB::table('city')->select('ID', 'Name')->find(2);
+        // $data = DB::table('city')->select('ID', 'Name')->where('ID', 2)->get();
+        $data = DB::table('city')->where('ID', '<', 5)->value('Name');
 
-        DB::beginTransaction();
+        dd($data);
 
-        try {
-            DB::update("UPDATE post SET created_at = :created_at WHERE created_at IS NULL", ['created_at' => NOW()]);
-            DB::update("UPDATE post SET updated_at2 = :updated_at WHERE updated_at IS NULL", ['updated_at' => NOW()]);
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
-            echo $e->getMessage();
-        }
-
-
-
-        $posts = DB::select("SELECT * FROM post");
-        return $posts;
+        return '<h1>Home Page</h1>';
     }
 
     public function test()
