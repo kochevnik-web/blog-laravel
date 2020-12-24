@@ -13,4 +13,12 @@ class Post extends Model
     // public $timestamps = false;
 
     // protected $fillable = ['title', 'content'];
+
+    /** Добавляем одностороннюю связь с таблицей Rubrics */
+
+    public function rubric()
+    {
+        return $this->belongTo('App\Rubric');
+        // return $this->belongTo(Rubric::class);
+    }
 }

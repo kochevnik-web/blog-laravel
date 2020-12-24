@@ -53,6 +53,9 @@ class HomeController extends Controller
         // Post::destroy(4, 5);
  
 
+        $post = Post::find(2);
+        dump($post->title, $post->rubric);
+
         return view('home', ['var' => 5, 'name' => 'John']);
     }
 
