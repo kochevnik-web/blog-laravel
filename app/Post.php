@@ -18,7 +18,7 @@ class Post extends Model
 
     public function rubric()
     {
-        return $this->belongTo('App\Rubric');
-        // return $this->belongTo(Rubric::class);
+        return $this->belongsTo('App\Rubric');
+        // return $this->belongsTo(Rubric::class);
     }
 }

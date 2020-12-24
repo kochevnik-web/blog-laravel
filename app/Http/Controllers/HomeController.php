@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Country;
 use App\City;
+use App\Rubric;
 
 class HomeController extends Controller
 {
@@ -52,9 +53,16 @@ class HomeController extends Controller
         // Post::destroy([8, 9]);
         // Post::destroy(4, 5);
  
+        /** Получение связанной с постом рубрики */
+        // $post = Post::find(2);
+        // dump($post->title, $post->rubric->title);
 
-        $post = Post::find(2);
-        dump($post->title, $post->rubric);
+        /** Получение связанной с рубрикой постом */
+        // $rubric = Rubric::find(2);
+        // dump($rubric->title, $rubric->post->title);
+
+        $rubric = Rubric::find(4);
+        dump($rubric->posts);
 
         return view('home', ['var' => 5, 'name' => 'John']);
     }

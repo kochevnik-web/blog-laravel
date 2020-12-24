@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Rubric extends Model
 {
     /** Добавляем одностороннюю связь с таблицей Post */
-    public function post()
+    public function posts()
     {
         // return $this->hasOne('App\Post');
-        return $this->hasOne(Post::class);
+        return $this->hasMany(Post::class);
     }
 }
