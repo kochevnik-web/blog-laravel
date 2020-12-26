@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Tag;
 
 class Post extends Model
 {
@@ -20,5 +21,12 @@ class Post extends Model
     {
         return $this->belongsTo('App\Rubric');
         // return $this->belongsTo(Rubric::class);
+    }
+
+    /** Добавляем связь многие ко многим с таблицей tags */
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

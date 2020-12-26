@@ -61,8 +61,27 @@ class HomeController extends Controller
         // $rubric = Rubric::find(2);
         // dump($rubric->title, $rubric->post->title);
 
-        $rubric = Rubric::find(4);
-        dump($rubric->posts);
+        // $rubric = Rubric::find(4);
+        // $post = Rubric::find(4)->posts()->select('title')->where('id', '>', '2')->get();
+
+        /** Получение постов и связанных с ними рубрик с помощью жадной загрузки */
+
+        // $posts = Post::with('rubric')->where('id', '>', 1)->get(); //добавляется метод width
+
+        // //Вывод данных для примера
+        // foreach ($posts as $post) {
+        //     dump($post->title, $post->rubric->title);
+        // }
+
+        /** Получение постов и связанных с ними тегов */
+
+        $post = Post::find(1);
+        dump($post->title);
+
+        foreach ($post->tags as  $tag) {
+            dump($tag->title);
+        }
+
 
         return view('home', ['var' => 5, 'name' => 'John']);
     }
