@@ -75,15 +75,15 @@ class HomeController extends Controller
 
         /** Получение постов и связанных с ними тегов */
 
-        $post = Post::find(1);
-        dump($post->title);
+        // $post = Post::find(1);
+        // dump($post->title);
 
-        foreach ($post->tags as  $tag) {
-            dump($tag->title);
-        }
+        // foreach ($post->tags as  $tag) {
+        //     dump($tag->title);
+        // }
 
 
-        return view('home', ['var' => 5, 'name' => 'John']);
+        return view('home', []);
     }
 
     public function test()

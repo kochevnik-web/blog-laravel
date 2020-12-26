@@ -11,14 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/test', 'HomeController@test');
-Route::get('/test2', 'Test\TestController@index');
+Route::get('/page/about', 'PageController@show')->name('pages.about');
 
-Route::get('/page/{slug}', 'PageController@show');
-
-Route::resource('/posts', 'PostController');
 
 Route::fallback(function () {
     // return redirect()->route('home');
