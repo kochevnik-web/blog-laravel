@@ -1,5 +1,9 @@
 @extends('layouts.layout')
 
+@section('title')
+    @parent {{ $title }}
+@endsection
+
 @section('content')
     <main>
 

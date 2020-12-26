@@ -82,8 +82,9 @@ class HomeController extends Controller
         //     dump($tag->title);
         // }
 
-
-        return view('home', []);
+        $title = 'Home Page';
+        $h1    = '<h1>Home page header</h1>';
+        return view('home', compact('title', 'h1'));
     }
 
     public function test()
