@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Tag;
+use Carbon\Carbon;
 
 class Post extends Model
 {
@@ -28,5 +29,10 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    /** Создаем метод для вывода даты поста с помощью библиотеки карбон */
+    public function getPostDate() {
+        return Carbon::parse($this->created_at)->diffForHumans();
     }
 }
