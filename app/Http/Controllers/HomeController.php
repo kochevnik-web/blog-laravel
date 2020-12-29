@@ -94,11 +94,26 @@ class HomeController extends Controller
 
     public function create()
     {
-        return view('create');
+
+        /** Получаем все рубрики в виде массива (который формируем с помощью метода pluck) */
+        $rubrics = Rubric::pluck('title', 'id')->all();
+
+        return view('create', compact('rubrics'));
     }
 
     public function store(Request $request)
     {
+
+        // dump($request->input('title'));
+        // dump($request->input('content'));
+        // dd($request->input('rubric_id'));
+
+        // dd($request->all());
+
+        /** При использовании в метода create($request->all()) необходимао в моделе Post указать свойство массового присваивания */
+        /** Например: protected $fillable = ['title', 'content', 'rubric_id']; */
+        Post::create($request->all());
+
         return redirect()->route('home');
     }
 }

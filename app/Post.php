@@ -14,7 +14,9 @@ class Post extends Model
     // protected $keyType = 'string';
     // public $timestamps = false;
 
-    // protected $fillable = ['title', 'content'];
+    /** Свойство массового присваивания для добаления разришенных полей в БД из формы */
+    /** При использовании в контроллере метода Post::create($request->all()) */
+    protected $fillable = ['title', 'content', 'rubric_id'];
 
     /** Добавляем одностороннюю связь с таблицей Rubrics */
 
