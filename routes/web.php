@@ -12,9 +12,10 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::post('/', 'HomeController@store')->name('posts.store');
+Route::get('/create', 'HomeController@create')->name('posts.create');
 
 Route::get('/page/about', 'PageController@show')->name('pages.about');
-
 
 Route::fallback(function () {
     // return redirect()->route('home');

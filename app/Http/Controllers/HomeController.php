@@ -6,6 +6,7 @@ use App\Post;
 use App\Country;
 use App\City;
 use App\Rubric;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -91,8 +92,13 @@ class HomeController extends Controller
         return view('home', compact('title', 'posts'));
     }
 
-    public function test()
+    public function create()
     {
-        return __METHOD__;
+        return view('create');
+    }
+
+    public function store(Request $request)
+    {
+        return redirect()->route('home');
     }
 }
