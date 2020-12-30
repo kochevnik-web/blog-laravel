@@ -112,6 +112,16 @@ class HomeController extends Controller
 
         /** При использовании в метода create($request->all()) необходимао в моделе Post указать свойство массового присваивания */
         /** Например: protected $fillable = ['title', 'content', 'rubric_id']; */
+        //Post::create($request->all());
+
+        /** Валидация входящих параметров */
+
+        $this->validate($request, [
+            'title'     => 'required|min:5|max:100',
+            'content'   => 'required',
+            'rubric_id' => 'integer',
+        ]);
+
         Post::create($request->all());
 
         return redirect()->route('home');
