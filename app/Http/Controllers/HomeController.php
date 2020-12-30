@@ -7,6 +7,7 @@ use App\Country;
 use App\City;
 use App\Rubric;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -115,12 +116,20 @@ class HomeController extends Controller
         //Post::create($request->all());
 
         /** Валидация входящих параметров */
+        /** Создание своих сообщений об ошибках */
+        $messages = [
+            'title.required' => 'Укажите поле заголовка',
+            'rubric_id.integer' => 'Выбирете рубрику',
+        ];
 
-        $this->validate($request, [
+        /** Создание правил валищации */
+        $rules = [
             'title'     => 'required|min:5|max:100',
             'content'   => 'required',
             'rubric_id' => 'integer',
-        ]);
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages)->validate();
 
         Post::create($request->all());
 

@@ -8,17 +8,7 @@
     <main>
         <div class="container">
             <form method="post" action="{{ route('posts.store') }}" class="mt-5">
-                <div class="mt-5">
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                </div>
+                @include('layouts.errors')
                 @csrf
                 <div class="form-group mb-2">
                     <label for="title">Title</label>
