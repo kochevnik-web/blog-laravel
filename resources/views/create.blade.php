@@ -8,7 +8,7 @@
     <main>
         <div class="container">
             <form method="post" action="{{ route('posts.store') }}" class="mt-5">
-                @include('layouts.errors')
+                @include('layouts.alerts')
                 @csrf
                 <div class="form-group mb-2">
                     <label for="title">Title</label>

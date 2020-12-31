@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // $data = Country::all();
         // $data = Country::where('Code', '<', 'ALB')->select('Code', 'Name')->offset(1)->limit(2)->get();
@@ -86,6 +86,33 @@ class HomeController extends Controller
 
         // $title = 'Home Page';
         // $h1    = '<h1>Home page header</h1>';
+
+        /** Получение и вывод данных ссесии */
+
+        // dump($request->session()->all());
+        // dump(session()->all());
+        // dump(session('test');
+        // dump($request->session()->get('cart')[0]['title']);
+
+        /** Добавление данных в сеесию  */
+
+        // $request->session()->put('test', 'test data');
+        // session(['cart' => [
+        //     ['id' => 1, 'title' => 'Product 1'],
+        //     ['id' => 2, 'title' => 'Product 2'],
+        // ]]);
+
+        /** Добавление данных в сессию */
+        // $request->session()->push('cart', ['id' => 3, 'title' => 'Product 3']);
+
+        /** Получение и одновременно удаление данных из сессии. Метод pull() */
+
+        // dump($request->session()->pull('test'));
+        // $request->session()->forget('test'); //Просто удаление
+        // $request->session()->flush(); //Удаление всез данных из сессий ВНИМАНИЕ!
+        
+
+        dump(session()->all());
         
         $title = 'Home Page';
 
@@ -136,6 +163,8 @@ class HomeController extends Controller
 
         Post::create($request->all());
 
+        /** Создание сессионной переменной flash (удалится после редиректа) */
+        $request->session()->flash('success', 'Данные сохранены');
         return redirect()->route('home');
     }
 }

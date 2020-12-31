@@ -1,4 +1,13 @@
     <div class="mt-5">
+
+        @if(session('success'))
+            <div class="alert alert-success">
+                <ul>
+                   {{ session('success') }}
+                </ul>
+            </div>
+        @endif
+
         @if($errors->any())
             <div class="alert alert-danger">
                 <ul>
