@@ -22,3 +22,5 @@ mix.scripts([
 ], 'public/assets/js/bundle.js');
 
 // mix.copyDirectory('resources/src/img', 'public/assets/img');
+
+// mix.browserSync('laravel.loc');

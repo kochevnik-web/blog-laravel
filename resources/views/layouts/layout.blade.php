@@ -9,8 +9,7 @@
     <meta name="generator" content="Hugo 0.79.0">
     <title>@section('title') My site @show</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/bundle.css') }}" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -71,7 +70,7 @@
 
     @include('layouts.footer')
 
-    <script src="/js/bootstrap.js"></script>
+    <script src="{{ asset('assets/js/bundle.js') }}"></script>
 
       
   </body>
