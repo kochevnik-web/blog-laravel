@@ -8,6 +8,8 @@ use App\City;
 use App\Rubric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+//Подключаем фасад для работы с куками
+use Illuminate\Support\Facades\Cookie;
 
 class HomeController extends Controller
 {
@@ -111,8 +113,20 @@ class HomeController extends Controller
         // $request->session()->forget('test'); //Просто удаление
         // $request->session()->flush(); //Удаление всез данных из сессий ВНИМАНИЕ!
         
+        // dump(session()->all());
 
-        dump(session()->all());
+
+        /** Работы с куками (Cookies) */
+
+        /** Создание куки с помощью фасада */
+        // Cookie::queue('test', 'Test Cookie', 1);
+
+        /** Получение куки */
+        // dump(Cookie::get('test'));
+        // dump($request->cookie('test'));
+
+        /** Удалкние куки */
+        // Cookie::queue(Cookie::forget('test'));
         
         $title = 'Home Page';
 
@@ -144,27 +158,29 @@ class HomeController extends Controller
 
         /** Валидация входящих параметров */
         /** Создание своих сообщений об ошибках */
-        $messages = [
-            'title.required'    => 'Укажите поле заголовка',
-            'title.min'         => 'Минимальное кол-во символов для названия 5',
-            'title.max'         => 'Максимальное кол-во символов для названия 5',
-            'content.required'  => 'Заполните поле Контента',
-            'rubric_id.integer' => 'Выбирете рубрику',
-        ];
+        // $messages = [
+        //     'title.required'    => 'Укажите поле заголовка',
+        //     'title.min'         => 'Минимальное кол-во символов для названия 5',
+        //     'title.max'         => 'Максимальное кол-во символов для названия 5',
+        //     'content.required'  => 'Заполните поле Контента',
+        //     'rubric_id.integer' => 'Выбирете рубрику',
+        // ];
 
-        /** Создание правил валищации */
-        $rules = [
-            'title'     => 'required|min:5|max:100',
-            'content'   => 'required',
-            'rubric_id' => 'integer',
-        ];
+        /** Создание правил валидации */
+        // $rules = [
+        //     'title'     => 'required|min:5|max:100',
+        //     'content'   => 'required',
+        //     'rubric_id' => 'integer',
+        // ];
 
-        $validator = Validator::make($request->all(), $rules, $messages)->validate();
+        // $validator = Validator::make($request->all(), $rules, $messages)->validate();
 
-        Post::create($request->all());
+        // Post::create($request->all());
 
         /** Создание сессионной переменной flash (удалится после редиректа) */
-        $request->session()->flash('success', 'Данные сохранены');
+        // $request->session()->flash('success', 'Данные сохранены');
+
+
         return redirect()->route('home');
     }
 }
