@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 //Подключаем фасад для работы с куками
 use Illuminate\Support\Facades\Cookie;
+//Подключаем фасад для работы с кешом
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -127,10 +129,30 @@ class HomeController extends Controller
 
         /** Удалкние куки */
         // Cookie::queue(Cookie::forget('test'));
+
+        /** Работы с кешом Cache */
+
+        /** Сохранение данных в кеш  */
+        // Cache::put('key', 'Value', 600);
+
+        /** Получение данных из кеша */
+        //dump(Cache::get('key'));
+
+        /** Удаление и отчистка кеша  */
+        $cache = Cache::pull('key'); //Сохранение у даление кеша по ключу
+        Cache::forget('key'); //Отчистка кеша по ключу
+        Cache::flush(); //Отчистка ВСЕГО кеша
+
+        /** Проверка на существование кеша  */
+        if(Cache::has('posts')){
+            $posts = Cache::get('posts');
+        } else {
+            $posts = Post::orderBy('id', 'desc')->get();
+            Cache::put('posts', $posts); 
+        }
         
         $title = 'Home Page';
 
-        $posts = Post::orderBy('id', 'desc')->get();
         return view('home', compact('title', 'posts'));
     }
 
