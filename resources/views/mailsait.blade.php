@@ -7,5 +7,7 @@
 </head>
 <body>
     {!! $body !!}
+
+    <img src="{{ $message->embed(url('assets/img/1.jpg')) }}" alt="">
 </body>
 </html>

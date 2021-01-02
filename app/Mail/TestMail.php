@@ -30,7 +30,6 @@ class TestMail extends Mailable
      */
     public function build()
     {
-
-        return $this->view('mailsait');
+        return $this->subject('Правильное сообщение!')->view('mailsait')->attach(url('assets/img/1.jpg'));
     }
 }

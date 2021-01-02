@@ -15,7 +15,7 @@ class ContactController extends Controller
             $body .= "<p><strong>E-mail: </strong>{$request->input('email')}</p>";
             $body .= "<p><strong>Сообщение: </strong><br>" . nl2br( $request->input('text') ) . "</p>";
 
-            Mail::to('test@test.ru')->send(new TestMail($body));
+            Mail::to('kacevnik@yandex.ru')->send(new TestMail($body));
             $request->session()->flash('success', 'Сообщение отправлено');
             return redirect('/send');
         }

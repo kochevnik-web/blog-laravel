@@ -139,13 +139,13 @@ class HomeController extends Controller
         //dump(Cache::get('key'));
 
         /** Удаление и отчистка кеша  */
-        $cache = Cache::pull('key'); //Сохранение у даление кеша по ключу
-        Cache::forget('key'); //Отчистка кеша по ключу
-        Cache::flush(); //Отчистка ВСЕГО кеша
+        // $cache = Cache::pull('key'); //Сохранение у даление кеша по ключу
+        // Cache::forget('key'); //Отчистка кеша по ключу
+        // Cache::flush(); //Отчистка ВСЕГО кеша
 
         /** Проверка на существование кеша  */
         if(Cache::has('posts')){
-            $posts = Cache::get('posts');
+            $posts = Cache::get('posts', 6000);
         } else {
             $posts = Post::orderBy('id', 'desc')->get();
             Cache::put('posts', $posts); 
