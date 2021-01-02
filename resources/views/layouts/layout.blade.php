@@ -46,6 +46,7 @@
                     <li><a href="{{ route('home') }}" class="text-white">Home</a></li>
                     <li><a href="{{ route('pages.about') }}" class="text-white">About</a></li>
                     <li><a href="{{ route('posts.create') }}" class="text-white">Create</a></li>
+                    <li><a href="{{ route('send') }}" class="text-white">Send Mail</a></li>
                 </ul>
                 </div>
             </div>
