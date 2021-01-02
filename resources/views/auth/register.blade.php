@@ -43,8 +43,8 @@
                     </div>
 
                     <div class="form-group mt-3">
-                        <label for="password_corfirmation">Confirm Password</label>
-                        <input type="password" class="form-control" id="password_corfirmation" name="password_corfirmation">
+                        <label for="password_confirmation">Confirm Password</label>
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                     </div>
 
 
