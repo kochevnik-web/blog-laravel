@@ -47,6 +47,7 @@
                     <li><a href="{{ route('pages.about') }}" class="text-white">About</a></li>
                     <li><a href="{{ route('posts.create') }}" class="text-white">Create</a></li>
                     <li><a href="{{ route('send') }}" class="text-white">Send Mail</a></li>
+                    <li><a href="{{ route('auth.register.create') }}" class="text-white">Registration</a></li>
                 </ul>
                 </div>
             </div>

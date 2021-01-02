@@ -25,3 +25,6 @@ Route::fallback(function () {
 // Route::get('/send', 'ContactController@send')->name('send');
 Route::match(['get', 'post'], '/send', 'ContactController@send')->name('send');
 
+Route::get('/register', 'UserController@create')->name('auth.register.create');
+Route::post('/register', 'UserController@store')->name('auth.register.store');
+
