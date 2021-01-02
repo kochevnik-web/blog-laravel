@@ -23,9 +23,29 @@
             <div class="container">
             @include('layouts.alerts')
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="alert alert-success">
-                        Письмо отправлено!
+                <form method="post" action="/send">
+
+                    @csrf
+
+                    <div class="form-group mt-3">
+                        <label for="name">Your name</label>
+                        <input type="text" class="form-control" id="name" name="name">
                     </div>
+
+                    <div class="form-group mt-3">
+                        <label for="email">Your email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="text">Text</label>
+                        <textarea class="form-control" id="text" rows="5" name="text"></textarea>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>

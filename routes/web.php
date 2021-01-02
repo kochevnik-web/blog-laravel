@@ -22,5 +22,6 @@ Route::fallback(function () {
     abort(404, 'Oops, Page not found...');
 });
 
-Route::get('/send', 'ContactController@send')->name('send');
+// Route::get('/send', 'ContactController@send')->name('send');
+Route::match(['get', 'post'], '/send', 'ContactController@send')->name('send');
 
