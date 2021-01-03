@@ -36,4 +36,35 @@ class UserController extends Controller
 
         return redirect()->route('auth.register.create');
     }
+
+    public function loginForm() {
+
+        $title = 'Login Page';
+        return view('auth.login', compact('title'));
+    }
+
+    public function login(Request $request) {
+        // dd($request->all());
+
+        $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ])) {
+            return redirect()->home();
+        }
+
+        return redirect()->back()->with('error', 'Логин или пароль не верны');
+    }
+
+    public function logout() {
+
+        Auth::logout();
+        return redirect()->route('auth.login');
+
+    }
 }

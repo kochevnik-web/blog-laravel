@@ -48,6 +48,8 @@
                     <li><a href="{{ route('posts.create') }}" class="text-white">Create</a></li>
                     <li><a href="{{ route('send') }}" class="text-white">Send Mail</a></li>
                     <li><a href="{{ route('auth.register.create') }}" class="text-white">Registration</a></li>
+                    <li><a href="{{ route('auth.login.create') }}" class="text-white">Login</a></li>
+                    <li><a href="{{ route('auth.logout') }}" class="text-white">Logout</a></li>
                 </ul>
                 </div>
             </div>
