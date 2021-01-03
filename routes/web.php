@@ -32,5 +32,5 @@ Route::get('/login', 'UserController@loginForm')->name('auth.login.create');
 Route::post('/login', 'UserController@login')->name('auth.login');
 Route::get('/logout', 'UserController@logout')->name('auth.logout');
 
-Route::get('/admin', 'Admin\MainController@index')->name('admin.index');
+Route::get('/admin', 'Admin\MainController@index')->middleware('admin')->name('admin.index');
 
