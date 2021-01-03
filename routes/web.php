@@ -25,12 +25,15 @@ Route::fallback(function () {
 // Route::get('/send', 'ContactController@send')->name('send');
 Route::match(['get', 'post'], '/send', 'ContactController@send')->name('send');
 
-Route::get('/register', 'UserController@create')->name('auth.register.create');
-Route::post('/register', 'UserController@store')->name('auth.register.store');
+Route::group(['middleware' => 'guest'], function(){
+    Route::get('/register', 'UserController@create')->name('auth.register.create');
+    Route::post('/register', 'UserController@store')->name('auth.register.store');
+    
+    Route::get('/login', 'UserController@loginForm')->name('auth.login.create');
+    Route::post('/login', 'UserController@login')->name('auth.login');
+});
 
-Route::get('/login', 'UserController@loginForm')->name('auth.login.create');
-Route::post('/login', 'UserController@login')->name('auth.login');
-Route::get('/logout', 'UserController@logout')->name('auth.logout');
+Route::get('/logout', 'UserController@logout')->name('auth.logout')->middleware('auth');
 
 Route::get('/admin', 'Admin\MainController@index')->middleware('admin')->name('admin.index');
 
