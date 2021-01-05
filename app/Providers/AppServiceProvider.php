@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
+use App\Rubric;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +28,9 @@ class AppServiceProvider extends ServiceProvider
         // DB::listen(function ($query) {
         //     dump($query->sql, $query->bindings);
         // });
+
+        view()->composer('layouts.footer', function($view){
+            $view->with('rubrics', Rubric::all());
+        });
     }
 }
