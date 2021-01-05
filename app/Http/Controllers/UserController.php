@@ -26,12 +26,17 @@ class UserController extends Controller
             'avatar'   => 'nullable|image'
         ]);
 
-        dd($request->all());
+        if($request->hasFile('avatar')){
+            $folder = date('Y-m-d');
+            $avatar = $request->file('avatar')->store("images/{$folder}");
+        }
+
 
         $user = User::create([
             'name'     => $request->name,
             'email'    => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'avatar'   => $avatar ?? null
         ]);
 
         $request->session()->flash('success', 'Регистрация прошла удачно');

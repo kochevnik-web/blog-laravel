@@ -67,8 +67,15 @@
             </a>
 
             @if(auth()->check())
-              <a href="#">{{ auth()->user()->name}}</a>
+              <a href="#">
+                {{ auth()->user()->name}}
+
+                @if(auth()->user()->avatar)
+                  <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="{{ auth()->user()->name}}" height="40px" class="ml-3">
+                @endif
+              </a>
             @endif
+
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
