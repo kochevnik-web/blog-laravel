@@ -23,7 +23,7 @@
             <div class="container">
             @include('layouts.alerts')
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <form method="post" action="{{ route('auth.register.store') }}">
+                <form method="post" action="{{ route('auth.register.store') }}" enctype="multipart/form-data">
 
                     @csrf
 
@@ -45,6 +45,11 @@
                     <div class="form-group mt-3">
                         <label for="password_confirmation">Confirm Password</label>
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="avatar">Avatar</label>
+                        <input type="file" class="form-control-file" id="avatar" name="avatar">
                     </div>
 
 
