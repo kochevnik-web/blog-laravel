@@ -144,13 +144,15 @@ class HomeController extends Controller
         // Cache::flush(); //Отчистка ВСЕГО кеша
 
         /** Проверка на существование кеша  */
-        if(Cache::has('posts')){
-            $posts = Cache::get('posts', 6000);
-        } else {
-            $posts = Post::orderBy('id', 'desc')->get();
-            Cache::put('posts', $posts); 
-        }
+        // if(Cache::has('posts')){
+        //     $posts = Cache::get('posts', 6000);
+        // } else {
+        //     $posts = Post::orderBy('id', 'desc')->get();
+        //     Cache::put('posts', $posts); 
+        // }
         
+
+        $posts = Post::orderBy('id', 'desc')->paginate(3);
         $title = 'Home Page';
 
         return view('home', compact('title', 'posts'));
