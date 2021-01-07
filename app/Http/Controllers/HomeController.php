@@ -165,6 +165,7 @@ class HomeController extends Controller
         $rubrics = Rubric::pluck('title', 'id')->all();
 
         return view('create', compact('rubrics'));
+        
     }
 
     public function store(Request $request)
