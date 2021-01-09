@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use App\Tag;
 use Carbon\Carbon;
 
@@ -36,5 +37,18 @@ class Post extends Model
     /** Создаем метод для вывода даты поста с помощью библиотеки карбон */
     public function getPostDate() {
         return Carbon::parse($this->created_at)->diffForHumans();
+    }
+
+    /** Делаем сеттер для поля title */
+
+    public function SetTitleAttribute($value)
+    {
+        $this->attributes['title'] = Str::title($value);
+    }
+
+    /** Создаем сеттер для поля title */
+    public function getTitleAttribute($value)
+    {
+        return Str::upper($value);
     }
 }
