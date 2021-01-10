@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
             // dump($query->sql, $query->bindings);
 
-            Log::channel('sqllogs')->info($query->sql);
+            // Log::channel('sqllogs')->info($query->sql);
         });
 
         view()->composer('layouts.footer', function($view){
