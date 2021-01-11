@@ -11,29 +11,6 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::post('/', 'HomeController@store')->name('posts.store');
-Route::get('/create', 'HomeController@create')->name('posts.create');
-
-Route::get('/page/about', 'PageController@show')->name('pages.about');
-
-Route::fallback(function () {
-    // return redirect()->route('home');
-    abort(404, 'Oops, Page not found...');
+Route::get('/', function () {
+    return view('welcome');
 });
-
-// Route::get('/send', 'ContactController@send')->name('send');
-Route::match(['get', 'post'], '/send', 'ContactController@send')->name('send');
-
-Route::group(['middleware' => 'guest'], function(){
-    Route::get('/register', 'UserController@create')->name('auth.register.create');
-    Route::post('/register', 'UserController@store')->name('auth.register.store');
-    
-    Route::get('/login', 'UserController@loginForm')->name('auth.login.create');
-    Route::post('/login', 'UserController@login')->name('auth.login');
-});
-
-Route::get('/logout', 'UserController@logout')->name('auth.logout')->middleware('auth');
-
-Route::get('/admin', 'Admin\MainController@index')->middleware('admin')->name('admin.index');
-
