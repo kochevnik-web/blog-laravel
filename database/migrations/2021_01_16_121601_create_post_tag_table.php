@@ -14,7 +14,9 @@ class CreatePostTagTable extends Migration
     public function up()
     {
         Schema::create('post_tag', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->integer('tag_id')->unsigned();//Метод unsigned() означает безнаковое поле
+            $table->integer('post_id')->unsigned();//Метод unsigned() означает безнаковое поле
             $table->timestamps();
         });
     }

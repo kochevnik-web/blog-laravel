@@ -13,8 +13,18 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
+
+        //Метод unsigned() означает безнаковое поле
+        //Метод nullable() по умолчанию NULL
         Schema::create('posts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('title');
+            $table->string('slug');
+            $table->text('description');
+            $table->text('content');
+            $table->integer('category_id')->unsigned();//Метод unsigned() означает безнаковое поле
+            $table->integer('views')->unsigned()->default(0);//Метод unsigned() означает безнаковое поле
+            $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }
