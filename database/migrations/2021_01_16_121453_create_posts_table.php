@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
     {
 
         //Метод unsigned() означает безнаковое поле
-        //Метод nullable() по умолчанию NULL
+        //Метод nullable() по умолчанию NULLп
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
