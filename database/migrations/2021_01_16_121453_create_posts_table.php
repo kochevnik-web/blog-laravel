@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();//Метод unique() - поле уникальное и индексируемое
             $table->text('description');
             $table->text('content');
             $table->integer('category_id')->unsigned();//Метод unsigned() означает безнаковое поле
