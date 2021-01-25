@@ -10,6 +10,8 @@ class Category extends Model
 {
     use Sluggable;
 
+    protected $fillable = ['title'];
+
     //Метод связи один ко многим
     public function posts()
     {

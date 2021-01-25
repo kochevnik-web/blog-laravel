@@ -199,8 +199,33 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      @if($errors->any())
+          <div class="col-md-12 mt-3">
+            <div class="alert alert-danger">
+              <ul class="list-unstyled">
+                @foreach($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          </div>
+      @endif
 
-    @yield('content')
+      @if(session()->has('success'))
+        <div class="col-md-12 mt-3">
+          <div class="alert alert-success">
+            <ul class="list-unstyled">
+              {{ session('success') }}
+            </ul>
+          </div>
+        </div>
+      @endif
+
+      @yield('content')
+    </div>
+    <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
