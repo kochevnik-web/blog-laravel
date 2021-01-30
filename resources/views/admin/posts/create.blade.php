@@ -27,7 +27,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" method="post" action="{{ route('posts.store') }}">
+        <form role="form" method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -48,24 +48,19 @@
                 <div class="form-group">
                     <label for="category_id">Категория</label>
                     <select class="form-control" name="category_id" id="category_id">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
-                            <option>option 5</option>
+                        <option>Выбор категории</option>
+                        @foreach($categories as $k => $v)
+                            <option value="{{ $k }}">{{ $v }}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="tags">Теги</label>
                     <select class="select2" multiple="multiple" id="tags" name="tags[] " data-placeholder="Выбор тегов" style="width: 100%;">
-                        <option>Alabama</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
+                        @foreach($tags as $k => $v)
+                            <option value="{{ $k }}">{{ $v }}</option>
+                        @endforeach
                     </select>
                 </div>
 
