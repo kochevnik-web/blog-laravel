@@ -10,6 +10,8 @@ class Tag extends Model
 {
 
     use Sluggable;
+
+    protected $fillable = ['title'];
     
     //Метод связи многие ко многим для постов и тегов
     public function posts()
