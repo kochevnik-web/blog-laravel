@@ -10,6 +10,8 @@ use App\Category;
 class Post extends Model
 {
 
+    protected $fillable = ['title', 'description', 'category_id', 'content', 'thumbnail'];
+
     use Sluggable;
     
     //Метод связи многие ко многим для постов и тегов
