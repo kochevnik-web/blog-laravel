@@ -17,7 +17,7 @@ class Post extends Model
     //Метод связи многие ко многим для постов и тегов
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
     //Метод связи категорий и постов

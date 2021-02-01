@@ -37,12 +37,12 @@
 
                 <div class="form-group">
                     <label for="description">Цитата</label>
-                    <textarea id="description" name="description" class="form-control" rows="3" placeholder="Цитата ..."></textarea>
+                    <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="3" placeholder="Цитата ..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="content">Контент</label>
-                    <textarea id="content" name="content" class="form-control" rows="7" placeholder="Контент ..."></textarea>
+                    <textarea id="content" name="content" class="form-control @error('content') is-invalid @enderror" rows="7" placeholder="Контент ..."></textarea>
                 </div>
 
                 <div class="form-group">

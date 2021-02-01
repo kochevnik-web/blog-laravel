@@ -56,7 +56,8 @@ class PostController extends Controller
             $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}");
         }
 
-        $post = Post::create($data); 
+        $post = Post::create($data);
+        $post->tags()->sync($request->tags);
 
         $request->session()->flash('success', 'Статья добавлена');
         return redirect()->route('posts.index');
