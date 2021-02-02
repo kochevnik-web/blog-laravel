@@ -84,7 +84,7 @@ class TagController extends Controller
 
         $tag = Tag::find($id);
         $tag->update($request->all());
-        return redirect()->route('tags.edit', compact('tag'))->with('success', 'Таг обновлен');
+        return redirect()->route('tags.edit', compact('tag'))->with('success', 'Тeг обновлен');
     }
 
     /**
