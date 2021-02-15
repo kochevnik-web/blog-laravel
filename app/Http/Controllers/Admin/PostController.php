@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Post;
@@ -88,8 +89,24 @@ class PostController extends Controller
     {
         
         $request->validate([
-            'title' => 'required',
+            'title'       => 'required',
+            'description' => 'required',
+            'content'     => 'required',
+            'category_id' => 'integer',
+            'thumbnail'   => 'nullable|image',
         ]);
+
+        $post = Post::find($id);
+        $data = $request->all();
+
+        if($request->hasFile('thumbnail')) {
+            Storage::delete($post->thumbnail);
+            $folder = date("Y-m-d");
+            $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}");
+        }
+
+        $post->update($data);
+        $post->tags()->sync($request->tags);
 
 
         return redirect()->route('posts.index')->with('success', 'Статья сохранена');
