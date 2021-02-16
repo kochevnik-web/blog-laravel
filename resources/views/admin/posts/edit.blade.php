@@ -76,7 +76,9 @@
                     </div>
                 </div>
 
-                <div>{{ $post->thumbnail }}</div>
+                <div class="mt-3">
+                    <img src="{{ $post->getImage() }}" alt="">
+                </div>
             </div>
             <!-- /.card-body -->
 

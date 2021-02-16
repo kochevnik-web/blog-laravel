@@ -39,4 +39,12 @@ class Post extends Model
             ]
         ];
     }
+
+    public function getImage() {
+        if(!$this->thumbnail){
+            return asset("no-image.png");
+        }
+
+        return asset("uploads/{$this->thumbnail}");
+    }
 }

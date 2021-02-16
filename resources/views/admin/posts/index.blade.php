@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="card-body">
-          <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Добавить статью</a>
+          <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3">Добавить статью</a>
           @if($posts->count())
           <div class="table-responsive">
             <table class="table table-bordered table-hover text-nowrap">
